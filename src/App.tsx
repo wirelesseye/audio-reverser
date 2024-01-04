@@ -196,48 +196,45 @@ function FileReadyPanel({
             </div>
             <TooltipProvider>
                 <div className="flex items-center">
-                    <div className="flex items-center gap-3">
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <Button
-                                    className={cn(
-                                        "h-12 w-12 transition-[border-radius]",
-                                        {
-                                            "rounded-3xl": !isPlaying,
-                                        },
-                                    )}
-                                    variant="outline"
-                                    size="icon"
-                                    onClick={isPlaying ? pause : play}
-                                >
-                                    {isPlaying ? (
-                                        <PauseIcon className="h-5 w-5" />
-                                    ) : (
-                                        <PlayIcon className="h-5 w-5" />
-                                    )}
-                                </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                                <p>{isPlaying ? "Pause" : "Play"}</p>
-                            </TooltipContent>
-                        </Tooltip>
-
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <Button
-                                    className="rounded-3xl text-destructive hover:text-destructive"
-                                    variant="outline"
-                                    size="icon"
-                                    onClick={openRecorder}
-                                >
-                                    <DotFilledIcon className="h-6 w-6" />
-                                </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                                <p>Record</p>
-                            </TooltipContent>
-                        </Tooltip>
-                    </div>
+                <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button
+                                className="rounded-3xl text-destructive hover:text-destructive"
+                                variant="outline"
+                                size="icon"
+                                onClick={openRecorder}
+                            >
+                                <DotFilledIcon className="h-6 w-6" />
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Record</p>
+                        </TooltipContent>
+                    </Tooltip>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button
+                                className={cn(
+                                    "ml-auto h-12 w-12 transition-[border-radius]",
+                                    {
+                                        "rounded-3xl": !isPlaying,
+                                    },
+                                )}
+                                variant="outline"
+                                size="icon"
+                                onClick={isPlaying ? pause : play}
+                            >
+                                {isPlaying ? (
+                                    <PauseIcon className="h-5 w-5" />
+                                ) : (
+                                    <PlayIcon className="h-5 w-5" />
+                                )}
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>{isPlaying ? "Pause" : "Play"}</p>
+                        </TooltipContent>
+                    </Tooltip>
                     <div className="ml-auto flex gap-3">
                         <Tooltip>
                             <TooltipTrigger asChild>
