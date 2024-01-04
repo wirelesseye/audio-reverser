@@ -86,7 +86,8 @@ export default function Recorder({ onFinish }: RecorderProps) {
         if (recorder) {
             recorder.onstop = () => {
                 const currTime = new Date().getTime();
-                const duration = startDutation.current + currTime - startTime.current;
+                const duration =
+                    startDutation.current + currTime - startTime.current;
                 const audio = new Blob(audioChunks.current, {
                     type: "audio/wav",
                 });
@@ -116,10 +117,18 @@ export default function Recorder({ onFinish }: RecorderProps) {
 
     return (
         <div className="flex flex-col gap-3">
-            <div className="my-3 flex justify-center text-3xl">
+            <div
+                className={cn(
+                    "my-3 flex justify-center transition-[font-size]",
+                    isPaused ? "text-5xl" : "text-4xl",
+                )}
+            >
                 {displayDuration[0]}:{displayDuration[1]}.{displayDuration[2]}
             </div>
-            <Progress value={volume * 100} />
+            <Progress
+                className={cn("transition-[height]", { "h-0": isPaused })}
+                value={volume * 100}
+            />
             <div className="flex items-center justify-center gap-3">
                 <Button
                     className="rounded-3xl"
